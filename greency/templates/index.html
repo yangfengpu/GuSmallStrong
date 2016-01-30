@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+  {% block title %}
+  Please login  
+  {% endblock %}
+
+
+  {% block includeFile %}
+          
+    <link rel="stylesheet" href="{{ url_for('static', filename="index.css")}}">
+
+  {% endblock %}
+
+
+  {% block content %}
+    <div id="login" style="background-image: url({{ url_for('static', filename="img/greenseaturtle.jpg")}}); background-repeat: no-repeat; -moz-background-size: cover;
+        background-size: cover;">
+    <div id="loginform">
+    <div id="gutitle"> Greency <span id="gusubtitle">BOM</span></div>
+    <form action="/success" method="post" class="ui form"> 
+      <div class="field">
+
+        {{ form.username.label (style="color: white;")}} {{ form.username(placeholder="輸入你的帳號", size=32,
+        style="width: 200px;") }}
+
+      </div>
+    <div class="field">
+
+        {{ form.password.label (style="color: white;")}}  {{ form.password(placeholder="輸入你的密碼", size=32, style="width: 200px;") }}
+
+      </div>
+
+  {% if form.error %}
+    <p class=loginError><strong>Error:</strong> 帳號或密碼錯誤!!
+  {% endif %}
+                <p>
+                    <input type="submit" value="登入" class="ui primary button">
+                </p>
+    </form>
+    </div>
+    </div>
+
+  {% endblock %}

@@ -1,0 +1,6 @@
+P/N      Part Number      料號
+supplier                  供應商
+inventory                 庫存
+specification             規格
+description               品名
+riginal Equipment Manufacturer OEM 原廠 http://www.toeic900.com.tw/%E5%8E%9F%E5%BB%A0-oem/

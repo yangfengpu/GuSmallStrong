@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<form action="/success" method="post"> 
+
+    <p>
+        {{ form.item.label }} {{ form.item(placeholder="輸入物品代號", size=32) }}
+    </p>
+
+    <p>
+        {{ form.description.label }}  {{ form.description(placeholder="輸入描述", size=32) }}
+    </p>
+
+    <p>
+        {% for error in form.qty.errors %}
+            {{ error }}
+        {% endfor %}
+        {{ form.qty.label }} {{ form.qty(placeholder="輸入數量", size=32) }}
+    </p>
+
+    <p>
+        {% for error in form.unit_price.errors %}
+            {{ error }}
+        {% endfor %}
+        {{ form.unit_price.label }} {{ form.unit_price(placeholder="輸入單價", size=32) }}
+    </p>
+
+
+    <p>
+       
+        amount {{ form.unit_price.property }}
+    </p>    
+
+    <p>
+        <input type="submit" value="add" class="btn btn-success">
+    </p>
+</form>
+

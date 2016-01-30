@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+  {% block includeFile %}
+          
+    <script type=text/javascript src="{{
+            url_for('static', filename='gu.js') }}"></script> 
+
+    <link rel="stylesheet" href="{{ url_for('static', filename="bom.css")}}">
+    
+
+  {% endblock %}
+
+  {% block title %}
+  BOM  
+  {% endblock %}
+
+  {% block content %}
+
+  <div id = "bom_header">
+
+      <!--span id = "welcome"> Good day ~ {{session['username']}} </span-->
+      <button class= "ui teal button" id = "logout">Logout</button>
+
+  </div>
+
+<div style="height: 30pt"></div>
+
+{% include 'dialog.html' %}
+
+<!-- Flat button with ripple -->
+<!-- FAB button with ripple -->
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" id="addARecord">
+  <i class="material-icons">+</i>
+</button>
+<div class="mdl-tooltip mdl-tooltip--large" for="addARecord">
+請小強增加一組資料
+</div>
+
+{% include 'data_table2.html' %}
+
+    
+<br><br><br>
+{% for x in data %}
+{{x.data}} 
+
+{% endfor %}
+
+<script>
+$( "#addARecord" ).click(function() {
+  $.ajax({
+  method: "GET",
+  url: "testJson",
+  //data: { name: "John", location: "Boston" }
+})
+  .done(function( msg ) {
+    alert( "Data Saved: " + msg.a );
+  });
+  $('.ui.modal').modal('show');
+  });
+</script>
+  {% endblock %}
+
