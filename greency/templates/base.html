@@ -6,7 +6,10 @@
     {% block head %}
     <script type=text/javascript src="{{
             url_for('static', filename='jquery-2.1.4.min.js') }}"></script>
+    <script type=text/javascript src="{{
+            url_for('static', filename='jquery-ui.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename="gu.css")}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename="jquery-ui.min.css")}}">
     <link rel="stylesheet" href="{{ url_for('static', filename="semantic.css")}}">
     <script type=text/javascript src="{{
             url_for('static', filename='semantic.js') }}"></script>
@@ -19,7 +22,7 @@
 
     <title>{% block title %}{% endblock %} - Greency</title>
     {% endblock %}
-    <link rel="icon" href="{{ url_for('static', filename="img/favicon.png")}}" type="image/ico" />
+    <link rel="icon" href="{{ url_for('static', filename="images/favicon.png")}}" type="image/ico" />
   </head>
   <body>
     

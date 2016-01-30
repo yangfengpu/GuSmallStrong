@@ -46,7 +46,13 @@
 {% endfor %}
 
 <script>
+$(function() {
+    $( "#dayin" ).datepicker();
+    $( "#dayout" ).datepicker();
+    $( "#daydeliver" ).datepicker();
+  });
 $( "#addARecord" ).click(function() {
+ /*
   $.ajax({
   method: "GET",
   url: "testJson",
@@ -55,6 +61,7 @@ $( "#addARecord" ).click(function() {
   .done(function( msg ) {
     alert( "Data Saved: " + msg.a );
   });
+*/
   $('.ui.modal').modal('show');
   });
 </script>
