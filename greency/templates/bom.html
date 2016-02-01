@@ -4,7 +4,8 @@
           
     <script type=text/javascript src="{{
             url_for('static', filename='gu.js') }}"></script> 
-
+    <script type=text/javascript src="{{
+            url_for('static', filename='bom.js') }}"></script> 
     <link rel="stylesheet" href="{{ url_for('static', filename="bom.css")}}">
     
 
@@ -45,25 +46,5 @@
 
 {% endfor %}
 
-<script>
-$(function() {
-    $( "#dayin" ).datepicker();
-    $( "#dayout" ).datepicker();
-    $( "#daydeliver" ).datepicker();
-  });
-$( "#addARecord" ).click(function() {
- /*
-  $.ajax({
-  method: "GET",
-  url: "testJson",
-  //data: { name: "John", location: "Boston" }
-})
-  .done(function( msg ) {
-    alert( "Data Saved: " + msg.a );
-  });
-*/
-  $('.ui.modal').modal('show');
-  });
-</script>
   {% endblock %}
 

@@ -2,61 +2,68 @@
   <div class="required fields">
     <div class="eight wide field">
       <label>料號</label>
-      <input type="text" placeholder="料號">
+      <input type="text" name="pn" placeholder="料號">
     </div>
     <div class="eight wide field">
       <label>型號</label>
-      <input type="text" placeholder="型號">
+      <input type="text" name="sn" placeholder="型號">
     </div>
   </div>
   <div class="required fields">
     <div class="eight wide field">
       <label>類型</label>
-      <input type="text" placeholder="類型">
+      <input type="text" name="type" placeholder="類型">
     </div>
     <div class="eight wide field">
       <label>元件規格</label>
-      <input type="text" placeholder="元件規格">
+      <input type="text" name="spec" placeholder="元件規格">
     </div>
   </div>
   <div class="required fields">
     <div class="eight wide field">
       <label>package</label>
-      <input type="text" placeholder="package">
+      <input type="text" name="package" placeholder="package">
     </div>
     <div class="eight wide field">
       <label>數量(PCS)</label>
-      <input type="number" min=1 placeholder="數量(PCS)">
+      <input type="number" min=1 name="pcs" placeholder="數量(PCS)">
     </div>
   </div>
   <div class="required fields">
-    <div class="eight wide field">
+    <div class="five wide field">
       <label>價格</label>
-      <input type="number" step="0.01" min=0 placeholder="價格">
+      <input type="number" step="0.01" min=0 name="price" placeholder="價格">
+    </div>
+    <div class="three wide field">
+      <label>單位</label>
+      <select class="dropdown" name="unit" >
+        <option value="USD">USD</option>
+        <option value="NTD">NTD</option>
+     </select>
     </div>
     <div class="eight wide field">
       <label>交期</label>
-      <input type="text" id="daydeliver" placeholder="交期">
+      <input type="text" id="daydeliver" name="deliver_day" placeholder="交期">
     </div>
   </div>
   <div class="required fields">
     <div class="eight wide field">
       <label>廠商</label>
-      <input type="text" placeholder="廠商">
+      <input type="text" name="company" placeholder="廠商">
     </div>
     <div class="eight wide field">
       <label>存入日期</label>
-      <input type="text" id="dayin" placeholder="存入日期">
+      <input type="text" id="dayin" name="dayin" placeholder="存入日期">
     </div>
   </div>
   <div class="fields">
     <div class="required eight wide field">
       <label>領出日期</label>
-      <input type="text" id="dayout" placeholder="領出日期">
+      <input type="text" id="dayout" name="dayout" placeholder="領出日期">
     </div>
     <div class="eight wide field">
       <label>備註</label>
-      <input type="text" placeholder="備註">
+      <input type="text" name="ps" placeholder="備註">
     </div>
   </div>
 
