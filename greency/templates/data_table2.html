@@ -1,6 +1,6 @@
-<table class="ui celled table">
+<table class="ui sortable celled table" id="bomTable">
   <thead>
-    <tr><th>ID</th>
+    <tr><!--th>ID</th-->
       <th>料號</th>
       <th>型號</th>
       <th>類型</th>
@@ -15,55 +15,27 @@
       <th>備註</th>
   </tr></thead>
   <tbody>
+    {% for i in range(data|length) %}
     <tr>
-      <td>
-        <!--div class="ui ribbon label">First</div-->
-        Cell
-      </td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-    </tr>
-    {% for i in range(10) %}
-    <tr>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
+      <!--td>{{data[i]}}</td-->
+      <td>{{data[i]["pn"]}}</td>
+      <td>{{data[i]["sn"]}}</td>
+      <td>{{data[i]["type"]}}</td>
+      <td>{{data[i]["spec"]}}</td>
+      <td>{{data[i]["package"]}}</td>
+      <td>{{data[i]["pcs"] }}</td>
+      <td>{{data[i]["price"] + " " + data[i]["unit"]}}</td>
+      <td>{{data[i]["deliver_day"]}}</td>
+      <td>{{data[i]["company"]}}</td>
+      <td>{{data[i]["dayin"]}}</td>
+      <td>{{data[i]["dayout"]}}</td>
+      <td>{{data[i]["ps"]}}</td>
     </tr>
     {% endfor %}
-    <tr>
-      <td>Cell</td>
-      <td>Cell</td>
-      <td>Cell</td>
-    </tr>
   </tbody>
   <tfoot>
-    <tr><th colspan="5">
-      <div class="ui right floated pagination menu">
+    <tr><th colspan="12">
+      <!--div class="ui right floated pagination menu">
         <a class="icon item">
           <i class="left chevron icon"></i>
         </a>
@@ -74,7 +46,7 @@
         <a class="icon item">
           <i class="right chevron icon"></i>
         </a>
-      </div>
+      </div-->
     </th>
   </tr></tfoot>
 </table>

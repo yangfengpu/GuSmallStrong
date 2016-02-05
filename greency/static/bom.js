@@ -4,11 +4,29 @@ $(function() {
     $( "#dayout" ).datepicker();
     $( "#daydeliver" ).datepicker();
     $( "#add" ).click(function(){
-      alert($('select[name="unit"]').val());
-      alert($('input[name="dayin"]').val());
-      getRecord(fields);
+      var rec = getRecord(fields);
+      console.log(JSON.stringify(rec));
+      $.ajax({
+        type: 'POST',
+        // Provide correct Content-Type, so that Flask will know how to process it.
+        contentType: 'application/json',
+        // Encode your data as JSON.
+        data: JSON.stringify(rec),
+        // This is the type of data you're expecting back from the server.
+        dataType: 'json',
+        url: '/gugupost',
+        success: function (e) {
+            console.log(e);
+        }
+     });
       reset(fields);
     });
+
+    
+    $( document ).ready(function() {
+        $('#bomTable').tablesort();
+    });
+
     $( "#addARecord" ).click(function() {
      /*
       $.ajax({
@@ -31,11 +49,17 @@ $(function() {
     }
 
     function getRecord(fields){
+      /*
       var record = new Map();
       for(key in fields){
         record.set(fields[key], $('input[name="' + fields[key] + '"]').val());
+      }*/
+      var record = {};
+      for (key in fields){
+        record[fields[key]] = $('input[name="' + fields[key] + '"]').val();
       }
-      console.log(record);
+      record['unit'] = $('select[name="unit"]').val();
+
       return record;
     }
   });

@@ -8,6 +8,7 @@ from flask import jsonify
 from flask import session
 from flask.ext.pymongo import PyMongo
 from pymongo import MongoClient
+from dao2 import mongoDao
 import random
 
 client = MongoClient()
@@ -67,14 +68,17 @@ def success():
 @app.route('/bom')
 def bom():
     if __isLogined():
-        k = random.random()
-        dic = {}
-        dic['alf'] = [1,2,3,4,5,6]
-        dic['data'] = k
-        #c1.insert_one(dic)
-        data = c1.find({'data' : 1})
-        return render_template('bom.html', data = data)
+        guguDao = mongoDao()
+        records = guguDao.read_records()
+        return render_template('bom.html', data = records)
     return redirect('/login')
+
+@app.route('/gugupost',  methods=['POST'])
+def saveRecord():
+    content = request.json
+    guguDao = mongoDao()
+    guguDao.add_a_record(content)
+    return ""
 
 
 #------ Helper functions --------

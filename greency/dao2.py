@@ -74,7 +74,7 @@ class mongoDao:
             param3 (List[str]): Description of `param3`.
 
         """
-        self.client = MongoClient()
+        self.client = MongoClient('localhost', 27017)#27017
         self.db = self.client.greency_db
         self.collection = self.db.inventory
 
@@ -92,6 +92,7 @@ class mongoDao:
             True if successful, False otherwise.
 
         """
+        '''
         doc = { "P/N": record,#record.get_PN(),
                 "supplier": "",
                 "inventory": "",
@@ -99,11 +100,16 @@ class mongoDao:
                 "description": "",
                 "OEM": "",
                 "tags": ["mongodb", "python", "pymongo"],
-                "date": datetime.datetime.utcnow()}
-        self.collection.insert(doc)
-    
+                "date": datetime.datetime.utcnow()}'''
+        self.collection.insert(record)
 
+    def read_records(self):
+        records = self.collection.find()
+        result = []
+        for record in records:
+            result.append(record)
+        return result
 
 if __name__ == '__main__':
     k = mongoDao()
-    k.add_a_record("aa")
+    k.add_a_record({"aa":123})
