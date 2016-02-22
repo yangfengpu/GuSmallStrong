@@ -16,8 +16,7 @@
   </tr></thead>
   <tbody>
     {% for i in range(data|length) %}
-    <tr>
-      <!--td>{{data[i]}}</td-->
+    <tr class = {{data[i]["_id"]}}>
       <td >{{data[i]["pn"]}}</td>
       <td>{{data[i]["sn"]}}</td>
       <td>{{data[i]["type"]}}</td>

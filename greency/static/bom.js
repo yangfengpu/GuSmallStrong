@@ -25,6 +25,22 @@ $(function() {
     
     $( document ).ready(function() {
         $('#bomTable').tablesort();
+        $('#bomTable').delegate("tr", "click", function(){
+          var cells = this.querySelectorAll("td");
+          var cellData = [];
+          for (var i = 0; i < cells.length; i+=1) {
+            var cell = cells[i].firstChild;
+            if(cell){
+              //console.log(cell.data);
+              cellData[i] = cell.data;
+            }else{
+              //console.log('null');
+              cellData[i] = '';
+            }
+          }
+          console.log(cellData);
+
+        });
     });
 
     $( "#addARecord" ).click(function() {
