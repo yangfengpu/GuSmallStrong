@@ -18,13 +18,12 @@ $(function() {
         dataType: 'json',
         url: '/gugupost',
         success: function (e) {
-            console.log(e);
+            renderTable();
         }
      });
     });
 
-    
-    $( document ).ready(function() {
+    function renderTable() {
         $('#bomTable').tablesort();
         $('#bomTable').delegate("tr", "click", function(){
           var cells = this.querySelectorAll("td");
@@ -44,7 +43,9 @@ $(function() {
           $('.ui.modal').modal('show');
 
         });
-    });
+    }
+    
+    $( document ).ready(renderTable());
 
     $( "#addARecord" ).click(function() {
       reset(fields);
