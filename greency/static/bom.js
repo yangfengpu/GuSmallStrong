@@ -3,7 +3,9 @@ $(function() {
     $( "#dayin" ).datepicker();
     $( "#dayout" ).datepicker();
     $( "#daydeliver" ).datepicker();
+    
     $( "#add" ).click(function(){
+
       var rec = getRecord(fields);
       console.log(JSON.stringify(rec));
       $.ajax({
@@ -19,7 +21,6 @@ $(function() {
             console.log(e);
         }
      });
-      reset(fields);
     });
 
     
@@ -39,11 +40,14 @@ $(function() {
             }
           }
           console.log(cellData);
+          setReuseData(fields, cellData);
+          $('.ui.modal').modal('show');
 
         });
     });
 
     $( "#addARecord" ).click(function() {
+      reset(fields);
      /*
       $.ajax({
       method: "GET",
@@ -63,6 +67,14 @@ $(function() {
       }
       
     }
+
+    function setReuseData(fields, reuseData){
+      for(key in fields ){
+        $('input[name="' + fields[key] + '"]').val(reuseData[key]);
+      }
+      
+    }
+
 
     function getRecord(fields){
       /*
