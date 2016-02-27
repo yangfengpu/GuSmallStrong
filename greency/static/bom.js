@@ -18,14 +18,35 @@ $(function() {
         dataType: 'json',
         url: '/gugupost',
         success: function (e) {
-            renderTable();
+            //renderTable();
+            window.location = location.href;
+        },
+        error: function(e){
+          console.log(e);
+          window.location = location.href;
         }
      });
     });
 
+    $('.delete_data').click(function(e){
+        event.stopPropagation();
+        console.log($(e.target).attr('data_id'));
+        console.log('delete');
+      }
+    );
+
+    $('.edit_data').click(function(e){
+        event.stopPropagation();
+        console.log($(e.target).attr('data_id'));
+        console.log('edit');
+      }
+    );
+
     function renderTable() {
         $('#bomTable').tablesort();
         $('#bomTable').delegate("tr", "click", function(){
+          var rowId = $(this).attr('class');
+          console.log(rowId);
           var cells = this.querySelectorAll("td");
           var cellData = [];
           for (var i = 0; i < cells.length; i+=1) {

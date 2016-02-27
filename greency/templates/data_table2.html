@@ -1,6 +1,7 @@
 <table class="ui sortable celled table" id="bomTable">
   <thead>
     <tr><!--th>ID</th-->
+      <th>移除</th>
       <th>料號</th>
       <th>型號</th>
       <th>類型</th>
@@ -17,7 +18,11 @@
   <tbody>
     {% for i in range(data|length) %}
     <tr class = {{data[i]["_id"]}}>
-      <td >{{data[i]["pn"]}}</td>
+      <td class="collapsing">
+        <button class="ui red compact circular button delete_data" data_id = {{data[i]["_id"]}} >X</button>
+        <button class="ui green compact circular button edit_data" data_id = {{data[i]["_id"]}} >E</button>
+      </td>
+      <td>{{data[i]["pn"]}}</td>
       <td>{{data[i]["sn"]}}</td>
       <td>{{data[i]["type"]}}</td>
       <td>{{data[i]["spec"]}}</td>
@@ -33,7 +38,7 @@
     {% endfor %}
   </tbody>
   <tfoot>
-    <tr><th colspan="12">
+    <tr><th colspan="13">
       <!--div class="ui right floated pagination menu">
         <a class="icon item">
           <i class="left chevron icon"></i>
