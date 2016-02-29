@@ -1,5 +1,5 @@
 $(function() {
-  var fields = ['pn', 'sn', 'type', 'spec', 'package', 'pcs', 'price', 'deliver_day', 'company', 'dayop', 'operation_type', 'ps'];
+  var fields = ['pn', 'sn', 'type', 'spec', 'package', 'pcs', 'price', 'deliver_day', 'company', 'dayop', 'optype', 'ps'];
     $( "#dayop" ).datepicker();
     
     $( "#add" ).click(function(){
@@ -16,11 +16,12 @@ $(function() {
         dataType: 'json',
         url: '/gugupost',
         success: function (e) {
-            //window.location = location.href;
+            //renderTable();
+            window.location = location.href;
         },
         error: function(e){
           console.log(e);
-          //window.location = location.href;
+          window.location = location.href;
         }
      });
     });
@@ -110,7 +111,6 @@ $(function() {
         record[fields[key]] = $('input[name="' + fields[key] + '"]').val();
       }
       record['unit'] = $('select[name="unit"]').val();
-      record['operation_type'] = $('select[name="operation_type"]').val();
 
       return record;
     }

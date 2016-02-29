@@ -1,7 +1,7 @@
 <table class="ui sortable celled table" id="bomTable">
   <thead>
     <tr><!--th>ID</th-->
-      <th>移除</th>
+      <th>移除/修改</th>
       <th>料號</th>
       <th>型號</th>
       <th>類型</th>
@@ -11,8 +11,8 @@
       <th>價格</th>
       <th>交期</th>
       <th>廠商</th>
-      <th>存入日期</th>
-      <th>領出日期</th>
+      <th>操作日期</th>
+      <th>操作類型(存入/領出)</th>
       <th>備註</th>
   </tr></thead>
   <tbody>
@@ -31,8 +31,8 @@
       <td>{{data[i]["price"] + " " + data[i]["unit"]}}</td>
       <td>{{data[i]["deliver_day"]}}</td>
       <td>{{data[i]["company"]}}</td>
-      <td>{{data[i]["dayin"]}}</td>
-      <td>{{data[i]["dayout"]}}</td>
+      <td>{{data[i]["dayop"]}}</td>
+      <td>{{data[i]["optype"]}}</td>
       <td>{{data[i]["ps"]}}</td>
     </tr>
     {% endfor %}

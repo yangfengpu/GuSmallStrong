@@ -56,14 +56,18 @@
       <input type="text" name="company" placeholder="廠商">
     </div>
     <div class="eight wide field">
-      <label>存入日期</label>
-      <input type="text" id="dayin" name="dayin" placeholder="存入日期">
+      <label>操作日期</label>
+      <input type="text" id="dayop" name="dayop" placeholder="操作日期">
     </div>
   </div>
+
   <div class="fields">
     <div class="required eight wide field">
-      <label>領出日期</label>
-      <input type="text" id="dayout" name="dayout" placeholder="領出日期">
+        <label>操作類型</label>
+        <select class="dropdown" name="operation_type" >
+          <option value="save">存入</option>
+          <option value="get">領出</option>
+       </select>
     </div>
     <div class="eight wide field">
       <label>備註</label>
