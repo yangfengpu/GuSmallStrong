@@ -31,6 +31,7 @@ Attributes:
 import pymongo
 import datetime
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 class mongoDao:
     """The summary line for a class docstring should fit on one line.
@@ -109,6 +110,9 @@ class mongoDao:
         for record in records:
             result.append(record)
         return result
+    def remove_a_record(self, oid):
+        print(oid)
+        self.collection.remove({"_id": ObjectId(oid)})
 
 if __name__ == '__main__':
     k = mongoDao()

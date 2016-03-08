@@ -79,6 +79,11 @@ def saveRecord():
     guguDao = mongoDao()
     guguDao.add_a_record(content)
     return ""
+@app.route('/guguremove/<oid>')
+def removeRecord(oid):
+    guguDao = mongoDao()
+    guguDao.remove_a_record(oid)
+    return ""
 
 
 #------ Helper functions --------

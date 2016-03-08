@@ -16,19 +16,35 @@ $(function() {
         dataType: 'json',
         url: '/gugupost',
         success: function (e) {
-            //window.location = location.href;
+            window.location = location.href;
         },
         error: function(e){
           console.log(e);
-          //window.location = location.href;
+          window.location = location.href;
         }
      });
     });
 
     $('.delete_data').click(function(e){
         event.stopPropagation();
-        console.log($(e.target).attr('data_id'));
+        var oid = $(e.target).attr('data_id');
+        console.log();
         console.log('delete');
+
+        $.ajax({
+          type: 'GET',
+          dataType: 'json',
+          url: '/guguremove/'.concat(oid),
+          success: function (e) {
+              window.location = location.href;
+          },
+          error: function(e){
+            console.log(e);
+            window.location = location.href;
+          }
+       });
+
+
       }
     );
 
