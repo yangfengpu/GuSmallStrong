@@ -1,7 +1,7 @@
 <table class="ui sortable celled table" id="bomTable">
   <thead>
     <tr><!--th>ID</th-->
-      <th>移除/修改</th>
+      <th>移除</th>
       <th>料號</th>
       <th>型號</th>
       <th>類型</th>
@@ -20,7 +20,7 @@
     <tr class = {{data[i]["_id"]}}>
       <td class="collapsing">
         <button class="ui red compact circular button delete_data" data_id = {{data[i]["_id"]}} >X</button>
-        <button class="ui green compact circular button edit_data" data_id = {{data[i]["_id"]}} >E</button>
+        <!--button class="ui green compact circular button edit_data" data_id = {{data[i]["_id"]}} >E</button-->
       </td>
       <td>{{data[i]["pn"]}}</td>
       <td>{{data[i]["sn"]}}</td>

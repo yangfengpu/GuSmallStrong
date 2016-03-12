@@ -75,7 +75,7 @@ class mongoDao:
             param3 (List[str]): Description of `param3`.
 
         """
-        self.client = MongoClient('localhost', 27017)#27017
+        self.client = MongoClient('localhost', 80)#27017
         self.db = self.client.greency_db
         self.collection = self.db.inventory
 
