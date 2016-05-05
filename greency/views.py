@@ -73,9 +73,18 @@ def bom():
         return render_template('bom.html', data = records)
     return redirect('/login')
 
+@app.route('/bomByPn/<pn>')
+def bomByPn(pn):
+    if __isLogined():
+        guguDao = mongoDao()
+        records = guguDao.read_records_by_pn(pn)
+        return render_template('bom.html', data = records)
+    return redirect('/login')
+
 @app.route('/gugupost',  methods=['POST'])
 def saveRecord():
     content = request.json
+    content['pcs'] = int(content['pcs'])
     guguDao = mongoDao()
     guguDao.add_a_record(content)
     return ""
@@ -117,3 +126,15 @@ def tj():
     f['a'] = '1'
     f['b'] = 2
     return jsonify(**f)
+
+@app.route('/summary', methods=(['GET']))
+def summary():
+    guguDao = mongoDao()
+    w = guguDao.aggregrate_records()
+    return render_template('summary.html', data = w)
+
+@app.route('/precaculatePcs/<targetPn>/<opType>/<pcs>')
+def precaculate_pcs(targetPn, opType, pcs):
+    guguDao = mongoDao()
+    f = guguDao.pre_saving_test(targetPn, pcs, opType)
+    return str(f)

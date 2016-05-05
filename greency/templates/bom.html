@@ -4,8 +4,6 @@
     <script type=text/javascript src="{{
             url_for('static', filename='tablesort.js') }}"></script> 
     <script type=text/javascript src="{{
-            url_for('static', filename='gu.js') }}"></script> 
-    <script type=text/javascript src="{{
             url_for('static', filename='bom.js') }}"></script> 
     <link rel="stylesheet" href="{{ url_for('static', filename="bom.css")}}">
     
@@ -18,14 +16,7 @@
 
   {% block content %}
 
-  <div id = "bom_header">
-
-      <!--span id = "welcome"> Good day ~ {{session['username']}} </span-->
-      <button class= "ui teal button" id = "logout">Logout</button>
-
-  </div>
-
-<div style="height: 30pt"></div>
+{% include 'header.html' %}
 
 {% include 'dialog.html' %}
 

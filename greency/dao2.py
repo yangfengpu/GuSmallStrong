@@ -75,7 +75,7 @@ class mongoDao:
             param3 (List[str]): Description of `param3`.
 
         """
-        self.client = MongoClient('localhost', 80)#27017
+        self.client = MongoClient('localhost', 27017)#27017
         self.db = self.client.greency_db
         self.collection = self.db.inventory
 
@@ -110,9 +110,48 @@ class mongoDao:
         for record in records:
             result.append(record)
         return result
+
+    def read_records_by_pn(self, pn):
+        records = self.collection.find({"pn": pn})
+        result = []
+        for record in records:
+            result.append(record)
+        return result
+
     def remove_a_record(self, oid):
-        print(oid)
         self.collection.remove({"_id": ObjectId(oid)})
+
+    def aggregrate_records(self):
+        save = self.collection.aggregate([
+            {"$match": {"operation_type": "save"}},
+            {"$group": {"_id": "$pn", "count": {"$sum": 1}}},
+            {"$sort": {"_id": 1}}
+        ])     
+
+        get = self.collection.aggregate([
+            {"$match": {"operation_type": "get"}},
+            {"$group": {"_id": "$pn", "count": {"$sum": 1}}},
+            {"$sort": {"_id": 1}}
+        ])
+
+        summ = self.collection.aggregate([
+            {"$group": {"_id": "$pn", "count": {"$sum": 
+            {"$cond": [{ "$eq": ["$operation_type", "save"] }, "$pcs", {"$subtract": [0, "$pcs"]}  ]}}}},
+            {"$sort": {"_id": 1}}
+        ])
+        #$cond: { if: { $gte: [ "$qty", 250 ] }, then: 30, else: 20 }
+        return summ['result']   
+    
+    def pre_saving_test(self, target_pn, pcs, operation_type):
+        current_status = self.aggregrate_records()
+        the_sum_dict = {}
+        for the_sum in current_status["sum"]['result']:
+            the_sum_dict[the_sum['_id']] = the_sum['count']
+        return the_sum_dict[target_pn]
+
+        #target =  current_status["sum"][target_pn]
+        #print( target )
+        #TODO According to the operation_type, pre caculate if the sum become negative 
 
 if __name__ == '__main__':
     k = mongoDao()

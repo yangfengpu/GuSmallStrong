@@ -1,0 +1,20 @@
+<table class="ui sortable celled table" id="summaryTable">
+  <thead>
+    <tr>
+      <th>料號</th>
+      <th>數量(PCS)</th>
+  </tr></thead>
+  <tbody>
+    {% for i in range(data|length) %}
+    <tr class = {{data[i]["_id"]}}>
+      <td>{{data[i]["_id"]}}</td>
+      <td>{{data[i]["count"] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr><th colspan="3">
+
+    </th>
+  </tr></tfoot>
+</table>
