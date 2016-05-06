@@ -80,6 +80,7 @@ $(function() {
     }
     
     $( document ).ready(renderTable());
+    $( document ).ready(addReturnToBomSummary());
 
     $( "#addARecord" ).click(function() {
       reset(fields);
@@ -130,4 +131,13 @@ $(function() {
 
       return record;
     }
+
+   function addReturnToBomSummary(){
+    if ($("#bomSummary").length > 0){ 
+    $("#bomSummary").on('click', function(){
+        var base_url = window.location.origin;
+        window.location.href = base_url + "/summary";
+    });
+} 
+   }
   });

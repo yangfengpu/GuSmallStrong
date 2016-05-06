@@ -6,6 +6,8 @@
     <script type=text/javascript src="{{
             url_for('static', filename='bom.js') }}"></script> 
     <link rel="stylesheet" href="{{ url_for('static', filename="bom.css")}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+
     
 
   {% endblock %}
@@ -28,6 +30,18 @@
 <div class="mdl-tooltip mdl-tooltip--large" for="addARecord">
 增加一組資料
 </div>
+
+  {% if leaf_level %}
+  <span style="font-size: 54px; position: absolute; margin-left: 5px;">
+    <i class="fa fa-home"  id = "bomSummary"></i>
+  </span>
+  <div class="mdl-tooltip mdl-tooltip--large" for="bomSummary">
+回到總和表單
+ </div>
+  {% else %}
+
+  {% endif %}
+
 
 {% include 'data_table2.html' %}
 
