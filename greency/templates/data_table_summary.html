@@ -1,12 +1,24 @@
+
+  <span style="font-size: 54px; position: relative; margin-left: 5px;">
+    <i class="fa fa-list" aria-hidden="true" id = "backToBom"></i>
+  </span>
+  <div class="mdl-tooltip mdl-tooltip--large" for="backToBom">
+ 全部列表
+ </div>
+
 <table class="ui sortable celled table" id="summaryTable">
   <thead>
     <tr>
       <th>料號</th>
       <th>數量(PCS)</th>
   </tr></thead>
-  <tbody>
+  <tbody id = "summaryTable">
     {% for i in range(data|length) %}
-    <tr class = {{data[i]["_id"]}}>
+    <tr class = {{data[i]["_id"]}} id = {{data[i]["_id"]}}>
+
+  <div class="mdl-tooltip mdl-tooltip--large" for={{data[i]["_id"]}}>
+ 點擊以進入 {{data[i]["_id"]}} 詳細列表
+ </div>
       <td>{{data[i]["_id"]}}</td>
       <td>{{data[i]["count"] }}</td>
     </tr>

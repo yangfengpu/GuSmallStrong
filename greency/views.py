@@ -59,7 +59,7 @@ def success():
     pwd=request.form["password"]
     if (__roleValidate(name, pwd)):
         session['username'] = name
-        return redirect('/summary')
+        return redirect('/bom')
     else:
         return redirect('/loginError' )
 
@@ -70,7 +70,7 @@ def bom():
     if __isLogined():
         guguDao = mongoDao()
         records = guguDao.read_records()
-        return render_template('bom.html', data = records, leaf_level = False)
+        return render_template('bom.html', data = records, leaf_level = True, not_bom = False)
     return redirect('/login')
 
 @app.route('/bomByPn/<pn>')
@@ -78,7 +78,7 @@ def bomByPn(pn):
     if __isLogined():
         guguDao = mongoDao()
         records = guguDao.read_records_by_pn(pn)
-        return render_template('bom.html', data = records, leaf_level = True)
+        return render_template('bom.html', data = records, leaf_level = True, not_bom = True)
     return redirect('/login')
 
 @app.route('/gugupost',  methods=['POST'])

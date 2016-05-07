@@ -3,31 +3,15 @@
     <script type=text/javascript src="{{
             url_for('static', filename='tablesort.js') }}"></script> 
     <script type=text/javascript src="{{
-            url_for('static', filename='summary.js') }}"></script>     
+            url_for('static', filename='summary.js') }}"></script> 
+    <script type=text/javascript src="{{
+            url_for('static', filename='returnToBom.js') }}"></script> 
+    <link rel="stylesheet" href="{{ url_for('static', filename="font-awesome-4.6.2/css/font-awesome.min.css")}}">    
   {% endblock %}
  {% block content %}
 
     {% include 'header.html' %}
 
-<script>
-function renderSummaryTable() {
-    console.log('gugug');
-
-    
-
-    $('#summaryTable').on("click", "tr", function(){
-        var pn = $(this).attr('class');
-        window.location.href = 'http://www.google.com';
-    });
-
-    $('#summaryTable').delegate("tr", "click", function(){
-        var pn = $(this).attr('class');
-        window.location.href = 'http://www.google.com';
-    });
-}
-
-  $( document ).ready(renderSummaryTable());
-</script>
 
     {% include 'data_table_summary.html' %}
 

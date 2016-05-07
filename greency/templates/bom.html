@@ -6,8 +6,9 @@
     <script type=text/javascript src="{{
             url_for('static', filename='bom.js') }}"></script> 
     <link rel="stylesheet" href="{{ url_for('static', filename="bom.css")}}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename="font-awesome-4.6.2/css/font-awesome.min.css")}}">
+    <script type=text/javascript src="{{
+            url_for('static', filename='returnToBom.js') }}"></script> 
     
 
   {% endblock %}
@@ -36,12 +37,26 @@
     <i class="fa fa-home"  id = "bomSummary"></i>
   </span>
   <div class="mdl-tooltip mdl-tooltip--large" for="bomSummary">
-回到總和表單
+ 加總表單
  </div>
+
   {% else %}
 
   {% endif %}
 
+
+
+  {% if not_bom %}
+  <span style="font-size: 54px; position: absolute; margin-left: 58px;">
+    <i class="fa fa-list" aria-hidden="true" id = "backToBom"></i>
+  </span>
+  <div class="mdl-tooltip mdl-tooltip--large" for="backToBom">
+ 全部列表
+ </div>
+
+  {% else %}
+
+  {% endif %}
 
 {% include 'data_table2.html' %}
 
