@@ -59,7 +59,6 @@ $(function() {
         $('#bomTable').tablesort();
         $('#bomTable').delegate("tr", "click", function(){
           var rowId = $(this).attr('class');
-          console.log(rowId);
           var cells = this.querySelectorAll("td");
           var cellData = [];
           for (var i = 1; i < cells.length; i+=1) {
@@ -137,7 +136,7 @@ $(function() {
     $("#bomSummary").on('click', function(){
         var base_url = window.location.origin;
         window.location.href = base_url + "/summary";
-    });
-} 
+        });
+    } 
    }
   });

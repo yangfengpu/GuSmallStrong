@@ -1,6 +1,6 @@
 $(function(){
 
-    function addReturnToBom(){
+function addReturnToBom(){
     if ($("#backToBom").length > 0){ 
     $("#backToBom").on('click', function(){
         var base_url = window.location.origin;
@@ -9,5 +9,7 @@ $(function(){
     } 
    }
 
-$( document ).ready(addReturnToBom());
-})(jQuery);
+  $( document ).ready(addReturnToBom());
+
+
+});

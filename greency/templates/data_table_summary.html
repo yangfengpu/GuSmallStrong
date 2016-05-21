@@ -6,7 +6,7 @@
  全部列表
  </div>
 
-<table class="ui sortable celled table" id="summaryTable">
+<table class="ui sortable celled table"  >
   <thead>
     <tr>
       <th>料號</th>
@@ -16,9 +16,9 @@
     {% for i in range(data|length) %}
     <tr class = {{data[i]["_id"]}} id = {{data[i]["_id"]}}>
 
-  <div class="mdl-tooltip mdl-tooltip--large" for={{data[i]["_id"]}}>
- 點擊以進入 {{data[i]["_id"]}} 詳細列表
- </div>
+    <div class="mdl-tooltip mdl-tooltip--large" for={{data[i]["_id"]}}>
+   點擊以進入 {{data[i]["_id"]}} 詳細列表
+   </div>
       <td>{{data[i]["_id"]}}</td>
       <td>{{data[i]["count"] }}</td>
     </tr>
