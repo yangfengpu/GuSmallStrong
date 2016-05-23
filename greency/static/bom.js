@@ -107,7 +107,15 @@ $(function() {
 
     function setReuseData(fields, reuseData){
       for(key in fields ){
-          $('input[name="' + fields[key] + '"]').val(reuseData[key]);
+
+          var fieldIndex = fields[key];
+          var fieldValue = reuseData[key];
+          var splits = fieldValue.split(' '); // 除去單位
+          if (splits.length > 1){
+            fieldValue = splits[0];
+          }
+
+          $('input[name="' + fieldIndex + '"]').val(fieldValue);
         
         
       }
